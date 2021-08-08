@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "344507960533",
+    "project_id": "loginregistration-5e663",
+    "storage_bucket": "loginregistration-5e663.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344507960533:android:b23adb2a2160165eb8665c",
+        "android_client_info": {
+          "package_name": "com.thara.loging_registration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344507960533-1t7htoppquuh1gl49t547af5qmg0bdll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMInx8FaY77SZIAqG5yE_h7ickz2PYvXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344507960533-1t7htoppquuh1gl49t547af5qmg0bdll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
