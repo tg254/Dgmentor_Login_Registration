@@ -7,8 +7,8 @@ class FirebaseUtil extends StatefulWidget {
 }
 
 class _FirebaseUtilState extends State<FirebaseUtil> {
-  User loggedInUser;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseUser loggedInUser;
+  final _auth = FirebaseAuth.instance;
   //FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
@@ -20,7 +20,7 @@ class _FirebaseUtilState extends State<FirebaseUtil> {
 
   void getCurrentUser() async {
     try {
-      final user = await _auth.currentUser;
+      final user = await _auth.currentUser();
       if (user != null) {
         loggedInUser = user;
         print(loggedInUser.email);

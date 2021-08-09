@@ -1,7 +1,7 @@
 import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'inputs.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,6 @@ import 'loging.dart';
 import 'textbox.dart';
 import 'passwordbox.dart';
 import 'Customize_button.dart' show CustermizeButton;
-import 'package:eosdart/eosdart.dart' as eos;
 
 class RegistartionPage extends StatefulWidget {
   @override
@@ -72,19 +71,6 @@ class _RegistartionPageState extends State<RegistartionPage> {
         });
   }
 
-  Future uploadImageToFirebase(BuildContext context) async {
-    String fileName = (_image.path);
-    Reference storageReference =
-        FirebaseStorage.instance.ref().child('uploadNew/$fileName');
-    eos.UploadTask uploadTask = storageReference.putFile(_image);
-    TaskSnapshot taskSnapshot = await uploadTask.onComplete;
-    taskSnapshot.ref.getDownloadURL().then((value) {
-      print("Done: $value");
-      imageUrl = value;
-    });
-  }
-
-  User loggedInUser;
   String selectedDepartment = 'Non';
   String selectedGendar = 'Male';
   String selectedEducation = 'Non';
@@ -101,7 +87,9 @@ class _RegistartionPageState extends State<RegistartionPage> {
   String gender;
   String eduction;
   String imageUrl;
-  final _firestore = FirebaseFirestore.instance;
+  final _firestore = Firestore.instance;
+
+  FirebaseUser loggedInUser;
 
   @override
   void initState() {
@@ -112,7 +100,7 @@ class _RegistartionPageState extends State<RegistartionPage> {
 
   void getCurrentUser() async {
     try {
-      final user = await _auth.currentUser;
+      final user = await _auth.currentUser();
       if (user != null) {
         loggedInUser = user;
         print(loggedInUser.email);
@@ -419,7 +407,7 @@ class _RegistartionPageState extends State<RegistartionPage> {
                             password: password,
                           );
 
-                          uploadImageToFirebase(context);
+                          // uploadImageToFirebase(context);
 
                           if (user != null) {
                             _firestore.collection('Users').add({

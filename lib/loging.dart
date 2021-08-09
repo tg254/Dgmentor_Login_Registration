@@ -5,6 +5,7 @@ import 'textbox.dart';
 import 'passwordbox.dart';
 import 'Customize_button.dart';
 import 'firebase_util.dart';
+import 'dart:io';
 
 class LoginPage extends StatefulWidget {
   static const String id = 'login';
@@ -17,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   bool showSpinner = false;
   String email;
   String password;
-  User loggedInUser;
+  FirebaseUser loggedInUser;
   final _auth = FirebaseAuth.instance;
 
   @override
